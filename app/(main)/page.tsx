@@ -1,35 +1,36 @@
 import DashboardCard from '@/components/dashboard/DashboardCard';
-import PostsTable from '@/components/posts/PostsTable';
-import AnalyticsChart from '@/components/dashboard/AnalyticsChart';
-import { Folder, MessageCircle, Newspaper, User } from 'lucide-react';
+import { Briefcase ,User, MessageCircleWarning, Building, CircleCheckBig } from 'lucide-react';
 
 export default function Home() {
   return (
     <>
-      <div className='flex flex-col md:flex-row justify-between gap-5 mb-5'>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-5"> {/* Reduced gap from 5 to 3 */}
         <DashboardCard
-          title='Posts'
-          count={100}
-          icon={<Newspaper className='text-slate-500' size={72} />}
+          title="Perusahaan"
+          count={9}
+          icon={<Building className="text-slate-500" size={20} />}
         />
         <DashboardCard
-          title='Categories'
-          count={12}
-          icon={<Folder className='text-slate-500' size={72} />}
+          title="Mahasiswa"
+          count={210}
+          icon={<User className="text-slate-500" size={20} />}
         />
         <DashboardCard
-          title='Users'
-          count={750}
-          icon={<User className='text-slate-500' size={72} />}
+          title="Lowongan"
+          count={90}
+          icon={<Briefcase className="text-slate-500" size={20} />}
         />
         <DashboardCard
-          title='Comments'
-          count={1200}
-          icon={<MessageCircle className='text-slate-500' size={72} />}
+          title="Sudah Interview"
+          count={109}
+          icon={<CircleCheckBig className="text-slate-500" size={20} />}
+        />
+        <DashboardCard
+          title="Belum Interview"
+          count={110}
+          icon={<MessageCircleWarning className="text-slate-500" size={20} />}
         />
       </div>
-      <AnalyticsChart />
-      <PostsTable title='Latest Posts' limit={5} />
     </>
   );
 }

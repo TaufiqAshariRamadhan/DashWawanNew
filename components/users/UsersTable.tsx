@@ -16,7 +16,7 @@ interface PostsTableProps {
   title?: string;
 }
 
-const PostsTable = ({ limit, title }: PostsTableProps) => {
+const UsersTable = ({ limit, title }: PostsTableProps) => {
   // Sort posts in dec order based on date
   const sortedPosts: Post[] = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -26,16 +26,16 @@ const PostsTable = ({ limit, title }: PostsTableProps) => {
   const filteredPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts;
 
   return (
-    <div className='mt-10'>
+    <div className='mt-10 p-5 w-full'>
       <h3 className='text-2xl mb-4 font-semibold'>{title ? title : 'Posts'}</h3>
       <Table>
-        <TableCaption>A list of recent posts</TableCaption>
+        <TableCaption>A list of recent Users</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>Title</TableHead>
+            <TableHead>Nama</TableHead>
             <TableHead className='hidden md:table-cell'>Author</TableHead>
             <TableHead className='hidden md:table-cell text-right'>
-              Date
+              Program Studi
             </TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
@@ -65,4 +65,4 @@ const PostsTable = ({ limit, title }: PostsTableProps) => {
   );
 };
 
-export default PostsTable;
+export default UsersTable;
