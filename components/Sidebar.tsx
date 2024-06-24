@@ -9,7 +9,7 @@ import {
 import {
   Handshake,
   Briefcase,
-  User,
+  User as UserIcon,
   MessageCircle,
   Building2,
 } from 'lucide-react';
@@ -27,11 +27,14 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
   return (
     <div className={`flex ${collapsed ? 'w-20' : 'w-64'} transition-width duration-300 bg-custom-color h-full`}>
       <div className="flex flex-col">
-      <div className='bg-custom-color text-white py-2 px-5 flex justify-between'>
-        <Link href='/'>
-          <Image src={logo} alt='TraversyPress' width={40} />
-        </Link>
-      </div>
+        <div className='bg-custom-color text-white py-2 px-5 flex items-center'>
+          <Link href='/'>
+            <Image src={logo} alt='TraversyPress' width={40} />
+          </Link>
+          {!collapsed && (
+            <span className='ml-2 text-white font-bold text-2xl' style={{ fontFamily: 'Inter, sans-serif' }}>TellWawan</span>
+          )}
+        </div>
         <button 
           onClick={toggleSidebar} 
           className={`p-2 m-2 text-white rounded-lg hover:bg-custom-color2 flex items-center ${collapsed ? 'justify-center' : 'justify-start'}`}
@@ -42,25 +45,34 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
         <Command className={`bg-custom-color text-white flex-grow ${collapsed ? 'rounded-none w-20' : 'rounded-none w-64'} transition-width duration-300`}>
           <CommandList>
             <CommandGroup>
-              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4'}`}>
+              <h3 className={`text-sm font-semibold ${collapsed ? 'hidden' : 'ml-4 mb-2 text-white'}`}>User</h3>
+              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4 pl-6'}`}>
                 <Building2 className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
-                {!collapsed && <Link href='/posts' className='ml-2 text-white'>Perusahaan</Link>} {/* Ensure the font color is white */}
+                {!collapsed && <Link href='/posts' className='ml-2 text-white font-light'>Perusahaan</Link>} {/* Ensure the font color is white */}
               </CommandItem>
-              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4'}`}>
-                <User className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
-                {!collapsed && <Link href='/users' className='ml-2 text-white'>Mahasiswa</Link>} {/* Ensure the font color is white */}
+              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4 pl-6'}`}>
+                <UserIcon className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
+                {!collapsed && <Link href='/users' className='ml-2 text-white font-light'>Mahasiswa</Link>} {/* Ensure the font color is white */}
               </CommandItem>
-              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4'}`}>
-                <Briefcase className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
-                {!collapsed && <Link href='/posts' className='ml-2 text-white'>Lowongan</Link>} {/* Ensure the font color is white */}
-              </CommandItem>
-              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4'}`}>
+            </CommandGroup>
+
+            <CommandGroup>
+              <h3 className={`text-sm font-semibold ${collapsed ? 'hidden' : 'ml-4 mb-2 text-white'}`}>Interview</h3>
+              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4 pl-6'}`}>
                 <Handshake className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
-                {!collapsed && <Link href='/posts' className='ml-2 text-white'>Assign Interview</Link>} {/* Ensure the font color is white */}
+                {!collapsed && <Link href='/posts' className='ml-2 text-white font-light'>Assign Interview</Link>} {/* Ensure the font color is white */}
               </CommandItem>
-              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4'}`}>
-                <MessageCircle className='h-4 w-4 text-white ' /> {/* Ensure the icon color is white */}
-                {!collapsed && <Link href='/posts' className='ml-2 text-white'>Hasil Interview</Link>} {/* Ensure the font color is white */}
+              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4 pl-6'}`}>
+                <MessageCircle className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
+                {!collapsed && <Link href='/posts' className='ml-2 text-white font-light'>Hasil Interview</Link>} {/* Ensure the font color is white */}
+              </CommandItem>
+            </CommandGroup>
+
+            <CommandGroup>
+              <h3 className={`text-sm font-semibold ${collapsed ? 'hidden' : 'ml-4 mb-2 text-white'}`}>Lowongan</h3>
+              <CommandItem className={`flex items-center hover:bg-custom-color2 ${collapsed ? 'justify-center' : 'justify-start pr-4 pl-6'}`}>
+                <Briefcase className='h-4 w-4 text-white' /> {/* Ensure the icon color is white */}
+                {!collapsed && <Link href='/posts' className='ml-2 text-white font-light'>Lowongan</Link>} {/* Ensure the font color is white */}
               </CommandItem>
             </CommandGroup>
           </CommandList>
